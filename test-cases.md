@@ -20,17 +20,26 @@ The application has a notification functionality which displays a Notification w
 
 Action | Notification
 --- | ---
-Adding a TODO | "Task added successfully"
-Updating a TODO | "Task Updated successfully"
-Deleting a TODO | "Todo Deleted Successfully"
-Attempting to add an epty-titled TODO | "Please enter a title"
+Adding a TODO | Task added successfully
+Updating a TODO | Task Updated successfully
+Deleting a TODO | Todo Deleted Successfully
+Attempting to add an empty-titled TODO | Please enter a title
 
 # Define 5 test cases covering key functionalities of the application
 Each test case represents one of the functionalities listed above [Feature List approach to testing]. However, they were combined into two seperate test automation workflows representing how a potential user may use the application [User Journey approach to testing]
 
 ## Test case 1:
+This test case verifies if the application displays existing TODOs properly.
 
-Top-level description of tested functionality
-Prerequisites (if needed)
-Steps to execute
-Validation criteria
+This test case should be executed in parallel with the remaining test cases.
+
+Action | Expected Result
+--- | ---
+Open the application in a Web Browser | Application is displayed properly with 'TODO List' on top and 'No Todos' message at the bottom
+Try adding an empty-titled TODO | No TODO is added / displayed. It has 'Incomplete' status by default
+Add a correct TODO | TODO is displayed in the main view
+Update an existing TODO | TODO is displayed in the main view with newly added title and status
+Remove an existing TODO | TODO is no longer displayed in the main view
+Remove last TODO | 'No Todos' message is displayed at the bottom
+
+If any of the steps result in an unexpected behavior consider the test case FAILED and raise an issue with the appropriate team. Otherwise, consider the test case PASSED.
