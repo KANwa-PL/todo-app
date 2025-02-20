@@ -18,11 +18,12 @@ The application allows the user to filter existing TODOs by status ['Completed',
 ## Notifications
 The application has a notification functionality which displays a Notification when an Action is executed:
 
-| Action | Notification |
-| Adding a TODO | "Task added successfully" |
-| Updating a TODO | "Task Updated successfully" |
-| Deleting a TODO | "Todo Deleted Successfully" |
-| Attempting to add an epty-titled TODO | "Please enter a title" |
+Action | Notification
+--- | ---
+Adding a TODO | "Task added successfully"
+Updating a TODO | "Task Updated successfully"
+Deleting a TODO | "Todo Deleted Successfully"
+Attempting to add an epty-titled TODO | "Please enter a title"
 
 # Define 5 test cases covering key functionalities of the application
 Each test case represents one of the functionalities listed above [Feature List approach to testing]. However, they were combined into two seperate test automation workflows representing how a potential user may use the application [User Journey approach to testing]
