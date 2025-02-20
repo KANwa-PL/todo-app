@@ -22,6 +22,10 @@ class Page {
         return $('.modal_closeButton__Fg7AM')
     }
 
+    get toDoCancelButton() {
+        return $('button[class="button_button__zbfSX button_button--secondary__mWkmM"]')
+    }
+
     get toDoAddButton () {
         return $('button[type="button"]')
     }

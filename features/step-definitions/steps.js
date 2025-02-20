@@ -6,6 +6,10 @@ const pages = {
     main: Page
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
 Given(/^I am on the (\w+) page$/, async (page) => {
     await pages[page].open()
 });
@@ -22,19 +26,39 @@ When(/^I remove a TODO$/, async () => {
     await browser.pause(500)
 });
 
-When(/^I update a TODO with a new title "([^"]*)"$/, async (newTitle) => {
+When(/^I "([^"]*)" a TODO with title "([^"]*)"$/, async (what, newTitle) => {
     await Page.toDoEditButton.click()
     await Page.toDoTitleInput.setValue(newTitle)
-    await Page.toDoSubmitButton.click()
+    if (what === "update") {
+        await Page.toDoSubmitButton.click()
+    } else {
+        if (getRandomInt(2) === 1) {
+            await Page.toDoCancelButton.click()
+        } else {
+            await Page.toDoCloseButton.click()
+        }  
+    }
     await browser.pause(500)
 });
 
-When(/^I update a TODO with a new status "([^"]*)"$/, async (newStatus) => {
+When(/^I "([^"]*)" a TODO with status "([^"]*)"$/, async (what, newStatus) => {
     await Page.toDoEditButton.click()
     await Page.toDoTypeInput.click()
-    await browser.keys([newStatus, "Enter"]);
-    await Page.toDoSubmitButton.click()
+    await browser.keys([newStatus]);
+    if (what === "update") {
+        await Page.toDoSubmitButton.click()
+    } else {
+        if (getRandomInt(2) === 1) {
+            await Page.toDoCancelButton.click()
+        } else {
+            await Page.toDoCloseButton.click()
+        }
+    }
     await browser.pause(500)
+});
+
+When(/^I close the update task form$/, async () => {
+    await Page.toDoCloseButton.click()
 });
 
 When(/^I update TODOs with new statuses$/, async () => {
