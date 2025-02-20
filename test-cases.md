@@ -1,7 +1,7 @@
 # Identifying key functionalities of the application:
 
 ## Displaying TODOs
-The application displays exisitng TODOs. If there are no TODOs added yet, the application displays a 'No Todos' message. If all TODOs are removed, the application also goes back to the 'No Todos' message.
+The application displays existing TODOs. If there are no TODOs added yet, the application displays a 'No Todos' message. If all TODOs are removed, the application also goes back to the 'No Todos' message.
 
 ## Adding TODOs
 The application lets the user add new TODO in a modal window [a simple form]. Once added, the new TODO is displayed in the main view. The application does not display newly created TODOs in any specific order. The application does not allow adding an empty-titled TODO.
@@ -27,7 +27,7 @@ Attempting to add an empty-titled TODO | Please enter a title
 Attempting to update without changes | No changes made
 
 # Define 5 test cases covering key functionalities of the application
-Each test case represents one of the functionalities listed above [Feature List approach to testing]. However, they were combined into two seperate test automation workflows representing how a potential user may use the application [User Journey approach to testing]
+Each test case represents one of the functionalities listed above [Feature List approach to testing]. However, they were combined into two separate test automation workflows representing how a potential user may use the application [User Journey approach to testing]
 
 ## Test case 1:
 ### Description:
