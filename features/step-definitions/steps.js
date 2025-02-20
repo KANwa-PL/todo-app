@@ -25,7 +25,14 @@ When(/^I remove a TODO$/, async () => {
 When(/^I update a TODO with a new title "([^"]*)"$/, async (newTitle) => {
     await Page.toDoEditButton.click()
     await Page.toDoTitleInput.setValue(newTitle)
+    await Page.toDoSubmitButton.click()
+    await browser.pause(500)
+});
+
+When(/^I update a TODO with a new status "([^"]*)"$/, async (newStatus) => {
+    await Page.toDoEditButton.click()
     await Page.toDoTypeInput.click()
+    await browser.keys([newStatus, "Enter"]);
     await Page.toDoSubmitButton.click()
     await browser.pause(500)
 });
@@ -49,6 +56,21 @@ Then(/^I should see a notification "([^"]*)"$/, async (notification) => {
     await expect(Page.notification).toHaveText(notification)
 });
 
+Then(/^I should see the "([^"]*)" TODO$/, async (status) => {
+    if (status === "completed") {
+        await expect(Page.toDoCompletedTitle).toBeDisplayed()
+        await expect(Page.toDoCheckbox).toMatchSnapshot()
+    } else {
+        await expect(Page.toDoIncompletedTitle).toBeDisplayed()
+        await expect(Page.toDoCheckbox).toMatchSnapshot()
+    }
+
+});
+
+Then(/^I should see "([^"]*)" message displayed$/, async (message) => {
+    await expect(Page.noToDos).toHaveText(message)
+});
+
 When(/^I filter the TODOS by "([^"]*)"$/, async (filter) => {
     await Page.toDoStatusDropdown.click()
     const element = await Page.statusValue(filter)
@@ -58,8 +80,6 @@ When(/^I filter the TODOS by "([^"]*)"$/, async (filter) => {
 
 Then(/I should see ([1-9]) TODOS$/, async (number) => {
     const todos = await Page.toDoItems
-    console.log("TUTAJ:",todos)
-    console.log(todos.length)
     await expect(todos).toBeElementsArrayOfSize(parseInt(number))
 })  
 

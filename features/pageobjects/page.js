@@ -38,6 +38,22 @@ class Page {
         return $('#status')
     }
 
+    get toDoCompletedTitle() {
+        return $('p[class="todoItem_todoText__j68oh todoItem_todoText--completed__gEH+W"]')
+    }
+
+    get toDoCheckbox() {
+        return $('.todoItem_svgBox__z1vm6')
+    }
+
+    get toDoIncompletedTitle() {
+        return $('.todoItem_todoText__j68oh.false')
+    }
+
+    get noToDos() {
+        return $('p[class="app_emptyText__11zUS"]')
+    }
+
     get notification() {
         return $('div[role="status"]')
     }

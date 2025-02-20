@@ -3,6 +3,7 @@ Feature: TODO Filtering
   Scenario: I can filter incomplete TODOS 
 
     Given I am on the main page
+    Then I should see "No Todos" message displayed
     When I add a new TODO with the title "Buy milk"
     And I add a new TODO with the title "Mow the lawn"
     And I add a new TODO with the title "Go to the barber"
@@ -22,3 +23,13 @@ Scenario: I see all TODOS without filtering
 
     When I filter the TODOS by "all"
     Then I should see 6 TODOS
+
+Scenario: I can remove all TODOS
+
+    When I remove a TODO
+    And I remove a TODO
+    And I remove a TODO
+    And I remove a TODO
+    And I remove a TODO
+    And I remove a TODO
+    Then I should see "No Todos" message displayed
