@@ -99,6 +99,7 @@ When(/^I filter the TODOS by "([^"]*)"$/, async (filter) => {
     await Page.toDoStatusDropdown.click()
     const element = await Page.statusValue(filter)
     await element.click()
+    await browser.pause(3000)
 
 });
 
